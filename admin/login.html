@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>麦麦云网站访问控制系统后台登陆</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.png?3">
+		<style type="text/css">
+			.modal-center{position: relative;
+									  margin: 0 auto;
+										top: 50%;
+										margin-top: -120px;
+			}
+		</style>
+  </head>
+  <body>
+    <div class="page-holder d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center py-5">
+          <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
+            <div class="pr-lg-5"><img src="img/illustration.svg" alt="" class="img-fluid"></div>
+          </div>
+          <div class="col-lg-5 px-lg-4">
+            <h1 class="text-base text-primary text-uppercase mb-4">麦麦云网站访问控制系统</h1>
+            <h2 class="mb-4">欢迎回来!</h2>
+            <p class="text-muted">若旧独立开发QQ:1784605674</p>
+            <form id="loginForm" class="mt-4">
+              <div class="form-group mb-4">
+                <input type="text" v-model="username" placeholder="请输入用户名" class="form-control border-0 shadow form-control-lg">
+              </div>
+              <div class="form-group mb-4">
+                <input type="password" v-model="password" placeholder="请输入密码" class="form-control border-0 shadow form-control-lg text-violet">
+              </div>
+              <div class="form-group mb-4" style="position: relative;">
+                <input type="text" v-model="yz_code" placeholder="请输入验证码" class="form-control border-0 shadow form-control-lg text-violet" style="width: 80%">
+                <h2 style="float: right;height: 100%;line-height: 48px;position: absolute;top: 0px;right: 0;width: 20%;
+								color: #4680ff;background-color: #FFF;border-radius: 10px;text-align: center;
+								box-shadow: 0 0.125rem 0.8rem rgba(0, 0, 0, 0.1) !important;
+								">{{yzcode}}</h2>
+              </div>
+              <div class="form-group mb-4">
+                <div class="custom-control custom-checkbox">
+                  <input id="customCheck1" type="checkbox" checked class="custom-control-input">
+                  <label for="customCheck1" class="custom-control-label">记住我</label>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary shadow px-5" @click="login">登录</button>
+            </form>
+          </div>
+        </div>
+        <p class="mt-5 mb-0 text-gray-400 text-center">Copyright &copy; 2020<a href="http://www.haomaim.cn/" target="_blank" title="麦麦云网站访问控制系统">麦麦云网站访问控制系统</a></p>
+      </div>
+    </div>
+		<!-- 模态框 -->
+		<input type="hidden" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#click" id="model"></input>
+		 <div class="modal fade" tabindex="-1" role="dialog" id="click">
+		   <div class="modal-center" role="document">
+		     <div class="modal-dialog modal-content">
+		       <div class="modal-header">
+		         <h4 class="modal-title" id="title"></h4>
+		       </div>
+		       <div class="modal-body">
+		         <p id="content"></p>
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+		       </div>
+		     </div><!-- /.modal-content -->
+		   </div><!-- /.modal-dialog -->
+		 </div><!-- /.modal -->
+    <!-- JavaScript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="../public/js/vue.js"></script>
+		<script type="text/javascript" src="../public/js/vue-resource.min.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+  </body>
+</html>

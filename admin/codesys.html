@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>密钥管理-麦麦云网站访问控制系统</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.png?3">
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+    <style>
+      .add_list{display: block;
+                width: 120px;
+                height: 45px;
+                float: right;
+                line-height: 41px;
+                text-align: center;
+                background-color: #4680ff;
+                border-radius: 10px;
+                color: #FFF;
+                font-size: 12px;
+                border: 2px solid #C0C0C0;
+                cursor: pointer;
+                transition: all .6s;
+      }
+			.modal-center{position: relative;
+									  margin: 0 auto;
+										top: 50%;
+										margin-top: -120px;
+			}
+    </style>
+  </head>
+  <body>
+    <!-- navbar-->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="iconfont icon-caidan"></i></a><a href="index.html" class="navbar-brand font-weight-bold text-uppercase text-base">麦麦云网站访问控制系统控制台</a>
+        <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
+          <li class="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="img/avatar-6.jpg" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+						<div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item">
+						  <strong class="d-block text-uppercase headings-font-family">admin</strong>
+						  <small>管理员</small></a>
+						  <div class="dropdown-divider"></div>
+						  <a href="JavaScript:;" class="dropdown-item" data-toggle="modal" data-target="#edit_pwd">管理员设置</a>
+						  <div class="dropdown-divider"></div>
+						  <a href="model/logoout.php" class="dropdown-item">退出</a>
+						</div>
+					</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="d-flex align-items-stretch">
+      <div id="sidebar" class="sidebar py-3">
+        <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">控制台</div>
+        <ul class="sidebar-menu list-unstyled">
+              <li class="sidebar-list-item">
+                <a href="index.html" class="sidebar-link text-muted">
+                  <i class="o-home-1 mr-3 text-gray"></i>
+                  <span>控制台</span>
+                </a>
+              </li>
+              <li class="sidebar-list-item">
+                <a href="system.html" class="sidebar-link text-muted">
+                  <i class="o-database-1 mr-3 text-gray"></i>
+                  <span>系统设置</span>
+                </a>
+              </li>
+              <li class="sidebar-list-item">
+                <a href="codesys.html" class="sidebar-link text-muted active">
+                  <i class="o-wireframe-1 mr-3 text-gray"></i>
+                  <span>密钥管理</span>
+                </a>
+              </li>
+        </ul>
+        <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">麦麦云网站访问控制系统</div>
+      </div>
+      <div class="page-holder w-100 d-flex flex-wrap">
+        <div class="container-fluid px-xl-5">
+          <section class="py-5">
+            <div class="row">
+              <!-- Form Elements -->
+              <div class="col-lg-12 mb-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h6 class="text-uppercase mb-0">密钥管理 
+                        <span class="add_list" data-toggle="modal" data-target="#add">添加密钥</span>
+                    </h6>
+                  </div>
+                  <div class="card-body">                           
+                        <table class="table table-striped table-hover card-text" style="text-align: center;">
+                      <thead>
+                        <tr>
+                          <th>密钥ID</th>
+                          <th>密钥</th>
+                          <th>生成时间</th>
+                          <th>有效期</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tbody">
+                        <tr v-for="(pro,index) in product">
+                          <th scope="row">{{pro.id}}</th>
+                          <td>{{pro.codekey}}</td>
+                          <td style="color: blue" >{{dateTime(pro.addtime)}}</td>
+                          <td style="color: green">{{dateTime(pro.exdata)}}</td>
+                          <td>
+                              <a data-toggle="modal" href="javascript:;" class="edit">
+                                <img src="img/icon/xg.svg" title="编辑" style="width: 20px;">
+                              </a> 
+                              <a href="javascript:;" class="delete" @click="deleteCode(index)" data-target="#dele" data-toggle="modal">
+                                <img src="img/icon/sc.svg" title="删除" style="width: 20px">
+                              </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-left text-primary">
+                <p class="mb-2 mb-md-0">若旧 &copy; 2019-2020</p>
+              </div>
+              <div class="col-md-6 text-center text-md-right text-gray-400">
+                <p class="mb-0">Copyright &copy; 2020麦麦云网站访问控制系统</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+        <!-- 添加密钥 -->
+        <form>
+          <div class="modal fade" tabindex="-1" role="dialog" id="add">
+            <div class="modal-center" role="document">
+              <div class="modal-dialog modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">添加密钥</h4>
+                      </div>
+                       <div class="form-group">
+												 <div style="height: 10px;"></div>
+                          <input type="text"  class="form-control" placeholder="请输入需要生成的密钥个数:" v-model="code">
+													<div style="height: 10px;"></div>
+													<select  class="form-control" @change="change($event)" v-model="active">
+														 <option v-for="(opt,index) in option" :value="opt.id" :key="index">{{opt.val}}</option>
+													</select>
+											 </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                          </button>
+                          <button type="button" class="btn btn-primary" @click="showCode">
+                              确认生成
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </form>
+				<!-- 修改密码 -->
+							<div class="modal fade" id="edit_pwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog modal-center">
+											<div class="modal-content">
+													<div class="modal-header">
+															<h4 class="modal-title">
+																	管理员设置
+															</h4>
+													</div>
+													 <div class="form-group">
+														  <input type="text" v-model="name" class="form-control" value="" style="margin-top: 20px" placeholder="请输入修改后用户名(不填写默认为不修改):">
+															<input type="text" v-model="pwd" class="form-control" value="" style="margin-top: 20px" placeholder="请输入原密码:">
+															<input type="text" v-model="newpwd" class="form-control" value="" style="margin-top: 20px" placeholder="请输入新密码:">
+													 </div>
+													<div class="modal-footer">
+															<button type="button" class="btn btn-default" data-dismiss="modal">取消
+															</button>
+															<button type="submit" class="btn btn-primary" @click="editPass">
+																	确认修改
+															</button>
+													</div>
+											</div>
+									</div>
+							</div>
+				<!-- 模态框 -->
+				<input type="hidden" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#click" id="model"></input>
+				 <div class="modal fade" tabindex="-1" role="dialog" id="click">
+				   <div class="modal-center" role="document">
+				     <div class="modal-dialog modal-content">
+				       <div class="modal-header">
+				         <h4 class="modal-title" id="title"></h4>
+				       </div>
+				       <div class="modal-body">
+				         <p id="content"></p>
+				       </div>
+				       <div class="modal-footer">
+				         <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+				       </div>
+				     </div><!-- /.modal-content -->
+				   </div><!-- /.modal-dialog -->
+				 </div><!-- /.modal -->
+    <!-- JavaScript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../public/js/vue.js"></script>
+		<script src="../public/js/vue-resource.min.js"></script>
+		<script src="js/codesys.js"></script>
+		<script src="js/front.js"></script>
+		<script type="text/javascript" src="js/editPass.js"></script>
+  </body>
+</html>

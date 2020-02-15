@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>系统设置-麦麦云网站访问控制系统</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.png?3">
+		<style type="text/css">
+			.modal-center{position: relative;
+									  margin: 0 auto;
+										top: 50%;
+										margin-top: -120px;
+			}
+		</style>
+  </head>
+  <body>
+    <!-- navbar-->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="iconfont icon-caidan"></i></a><a href="index.html" class="navbar-brand font-weight-bold text-uppercase text-base">麦麦云网站访问控制系统控制台</a>
+        <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
+          <li class="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="img/avatar-6.jpg" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+						<div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item">
+						  <strong class="d-block text-uppercase headings-font-family">admin</strong>
+						  <small>管理员</small></a>
+						  <div class="dropdown-divider"></div>
+						  <a href="JavaScript:;" class="dropdown-item" data-toggle="modal" data-target="#edit_pwd">管理员设置</a>
+						  <div class="dropdown-divider"></div>
+						  <a href="model/logoout.php" class="dropdown-item">退出</a>
+						</div>
+					</li>
+        </ul>
+      </nav>
+    </header>
+    <div class="d-flex align-items-stretch">
+      <div id="sidebar" class="sidebar py-3">
+        <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">控制台</div>
+        <ul class="sidebar-menu list-unstyled">
+              <li class="sidebar-list-item">
+                <a href="index.html" class="sidebar-link text-muted">
+                  <i class="o-home-1 mr-3 text-gray"></i>
+                  <span>控制台</span>
+                </a>
+              </li>
+              <li class="sidebar-list-item">
+                <a href="system.html" class="sidebar-link text-muted active">
+                  <i class="o-database-1 mr-3 text-gray"></i>
+                  <span>系统设置</span>
+                </a>
+              </li>
+              <li class="sidebar-list-item">
+                <a href="codesys.html" class="sidebar-link text-muted">
+                  <i class="o-wireframe-1 mr-3 text-gray"></i>
+                  <span>密钥管理</span>
+                </a>
+              </li>
+        </ul>
+        <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">麦麦云网站访问控制系统</div>
+      </div>
+      <div class="page-holder w-100 d-flex flex-wrap">
+        <div class="container-fluid px-xl-5">
+          <section class="py-5">
+            <div class="row">
+              <!-- Form Elements -->
+              <div class="col-lg-12 mb-5">
+                <div class="card">
+                  <div class="card-header">
+                    <h3 class="h6 text-uppercase mb-0">麦麦云网站防护系统设置</h3>
+                  </div>
+                  <div class="card-body">
+                    <form class="form-horizontal" id="preserved">
+                      <div class="form-group row">
+                        <label class="col-md-3 form-control-label">网站路径(例如:/mai或http://haomaim.cn)</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control"  placeholder="密钥输入正确跳转的目录" v-model="dirname">
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <label class="col-md-3 form-control-label">支付接口</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" value="" name="dir">
+                        </div>
+                      </div>
+                      <div class="line"></div>
+                      <div class="form-group row">
+                        <div class="col-md-9 ml-auto">
+                          <button type="button" class="btn btn-primary" @click="preserve">保存更改</button>
+                          <!-- <button type="submit" class="btn btn-secondary">恢复默认</button> -->
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-left text-primary">
+                <p class="mb-2 mb-md-0">若旧 &copy; 2019-2020</p>
+              </div>
+              <div class="col-md-6 text-center text-md-right text-gray-400">
+                <p class="mb-0">Copyright &copy; 2020麦麦云网站访问控制系统</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+		<!-- 修改密码 -->
+					<div class="modal fade" id="edit_pwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-center">
+									<div class="modal-content">
+											<div class="modal-header">
+													<h4 class="modal-title">
+															管理员设置
+													</h4>
+											</div>
+											 <div class="form-group">
+												  <input type="text" v-model="name" class="form-control" value="" style="margin-top: 20px" placeholder="请输入修改后用户名(不填写默认为不修改):">
+													<input type="text" v-model="pwd" class="form-control" value="" style="margin-top: 20px" placeholder="请输入原密码:">
+													<input type="text" v-model="newpwd" class="form-control" value="" style="margin-top: 20px" placeholder="请输入新密码:">
+											 </div>
+											<div class="modal-footer">
+													<button type="button" class="btn btn-default" data-dismiss="modal">取消
+													</button>
+													<button type="submit" class="btn btn-primary" @click="editPass">
+															确认修改
+													</button>
+											</div>
+									</div>
+							</div>
+					</div>
+		<!-- 模态框 -->
+		<input type="hidden" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#click" id="model"></input>
+		 <div class="modal fade" tabindex="-1" role="dialog" id="click">
+		   <div class="modal-center" role="document">
+		     <div class="modal-dialog modal-content">
+		       <div class="modal-header">
+		         <h4 class="modal-title" id="title"></h4>
+		       </div>
+		       <div class="modal-body">
+		         <p id="content"></p>
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+		       </div>
+		     </div><!-- /.modal-content -->
+		   </div><!-- /.modal-dialog -->
+		 </div><!-- /.modal -->
+    <!-- JavaScript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../public/js/vue.js"></script>
+		<script src="../public/js/vue-resource.min.js"></script>
+		<script src="js/system.js"></script>
+		<script src="js/front.js"></script>
+		<script type="text/javascript" src="js/editPass.js"></script>
+  </body>
+</html>

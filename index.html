@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>麦麦云网站防火墙-若旧独立开发QQ:1784605674</title>     
+    <link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/responsive.css">
+    </head>
+    <style type="text/css">
+    	.modal-center{position: relative;
+									  margin: 0 auto;
+										top: 50%;
+										margin-top: -120px;
+			}
+    </style>
+    <body>
+    <section id="slider"> 
+        <div data-velocity="-.2" class="overlay-bg slide-bg"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="slide-text-table">
+                        <div class="slide-text-table-cell">
+                            <div class="slide-text wow fadeIn" id="Verification" style="float: none;max-width: 100%;">
+                                   <div class="content">
+										<h2>{{title}}</h2>
+										<form>
+											<input type="text" placeholder="在这里输入密钥:" v-model="code">
+											<button type="button" @click="yzCode">{{submit}}</button>
+										</form>
+									</div>                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+		 <!-- 模态框 -->	
+		<input type="hidden" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#click" id="model"></input>
+		 <div class="modal fade" tabindex="-1" role="dialog" id="click">
+		   <div class="modal-center" role="document">
+		     <div class="modal-dialog modal-content">
+		       <div class="modal-header">
+		         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		         <h4 class="modal-title" id="title"></h4>
+		       </div>
+		       <div class="modal-body">
+		         <p id="content"></p>
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+		       </div>
+		     </div><!-- /.modal-content -->
+		   </div><!-- /.modal-dialog -->
+		 </div><!-- /.modal -->
+  </body>
+	<script type="text/javascript" src="public/js/vue.js"></script>
+	<script type="text/javascript" src="public/js/vue-resource.min.js"></script>
+	<script type="text/javascript" src="public/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="public/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="public/js/inc.js"></script>
+</html>

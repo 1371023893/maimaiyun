@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>麦麦云网站访问控制系统后台首页</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- orion icons-->
+    <link rel="stylesheet" href="css/orionicons.css">
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon.png?3">
+		<style type="text/css">
+			.modal-center{position: relative;
+									  margin: 0 auto;
+										top: 50%;
+										margin-top: -120px;
+			}
+		</style>
+  </head>
+  <body>
+    <!-- navbar-->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow"><a href="#" class="sidebar-toggler text-gray-500 mr-4 mr-lg-5 lead"><i class="iconfont icon-caidan"></i></a><a href="index.html" class="navbar-brand font-weight-bold text-uppercase text-base">麦麦云网站访问控制系统控制台</a>
+        <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
+          <li class="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="img/avatar-6.jpg" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+            <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item">
+              <strong class="d-block text-uppercase headings-font-family">admin</strong>
+              <small>管理员</small></a>
+              <div class="dropdown-divider"></div>
+              <a href="JavaScript:;" class="dropdown-item" data-toggle="modal" data-target="#edit_pwd">管理员设置</a>
+              <div class="dropdown-divider"></div>
+              <a href="model/logoout.php" class="dropdown-item">退出</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="d-flex align-items-stretch">
+      <div id="sidebar" class="sidebar py-3">
+        <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">控制台</div>
+        <ul class="sidebar-menu list-unstyled">
+              <li class="sidebar-list-item">
+                <a href="index.html" class="sidebar-link text-muted active">
+                  <i class="o-home-1 mr-3 text-gray"></i>
+                  <span>控制台</span>
+                </a>
+              </li>
+              <li class="sidebar-list-item">
+                <a href="system.html" class="sidebar-link text-muted">
+                  <i class="o-database-1 mr-3 text-gray"></i>
+                  <span>系统设置</span>
+                </a>
+              </li>
+              <li class="sidebar-list-item">
+                <a href="codesys.html" class="sidebar-link text-muted">
+                  <i class="o-wireframe-1 mr-3 text-gray"></i>
+                  <span>密钥管理</span>
+                </a>
+              </li>
+        </ul>
+        <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">麦麦云网站访问控制系统</div>
+      </div>
+      <div class="page-holder w-100 d-flex flex-wrap" id="index">
+        <div class="container-fluid px-xl-5">
+          <section class="py-5">
+            <div class="row text-dark">
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card rounded credit-card bg-hover-gradient-violet">
+                  <div class="content d-flex flex-column justify-content-between p-4">
+                    <h1 class="mb-5">销售总额</h1>
+										<!-- <h1 align="center">￥8958</h1> -->
+										<h1 align="center">正在开发中~</h1>
+                    <div class="d-flex justify-content-between align-items-end pt-3">
+                      <div class="text-uppercase">
+                        <div class="font-weight-bold d-block">MAIMAI</div><small class="text-gray">QQ:1784605674</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card rounded credit-card bg-hover-gradient-blue">
+                  <div class="content d-flex flex-column justify-content-between p-4">
+                    <h1 class="mb-5">密钥数量</h1>
+										<h1 align="center">{{codeNums}}</h1>
+                    <div class="d-flex justify-content-between align-items-end pt-3">
+                      <div class="text-uppercase">
+                        <div class="font-weight-bold d-block">MAIMAI</div><small class="text-gray">QQ:1784605674</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="card rounded credit-card bg-hover-gradient-green">
+                  <div class="content d-flex flex-column justify-content-between p-4">
+                    <h1 class="mb-5">过期密钥</h1>
+										<h1 align="center" style="color:red">等待开发</h1>
+                    <div class="d-flex justify-content-between align-items-end pt-3">
+                      <div class="text-uppercase">
+                        <div class="font-weight-bold d-block">MAIMAI</div><small class="text-gray">1784605674</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="card mb-5 mb-lg-0">         
+                  <div class="card-header">
+                    <h2 class="h6 mb-0 text-uppercase">更多功能正在编写中~</h2>
+                  </div>
+                  <div class="card-body">
+                    <p class="text-gray mb-5">欢迎使用麦麦云网站访问控制系统!</p>
+                    <div class="d-flex justify-content-between align-items-start align-items-sm-center mb-4 flex-column flex-sm-row">
+                      <div class="left d-flex align-items-center">
+                        <div class="icon icon-lg shadow mr-3 text-gray"><i class="fab fa-dropbox"></i></div>
+                        <div class="text">
+                          <h6 class="mb-0 d-flex align-items-center"> <span>项目地址</span><span class="dot dot-sm ml-2 bg-violet"></span></h6>
+                            <small class="text-gray"><a href="http://www.haomaim.cn" target="_blank">http://www.haomaim.cn</a></small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start align-items-sm-center mb-4 flex-column flex-sm-row">
+                      <div class="left d-flex align-items-center">
+                        <div class="icon icon-lg shadow mr-3 text-gray"><i class="fab fa-apple"></i></div>
+                        <div class="text">
+                          <h6 class="mb-0 d-flex align-items-center">
+                          <a href="https://jq.qq.com/?_wv=1027&k=54iK5kb" target="_blank">
+														<span>QQ群</span><span class="dot dot-sm ml-2 bg-green"></span></h6><small class="text-gray">Software cost</small>
+													</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start align-items-sm-center mb-4 flex-column flex-sm-row">
+                      <div class="left d-flex align-items-center">
+                        <div class="icon icon-lg shadow mr-3 text-gray"><i class="fas fa-shopping-basket"></i></div>
+                        <div class="text">
+													<a href="">
+														  <h6 class="mb-0 d-flex align-items-center"> <span>客服QQ</span><span class="dot dot-sm ml-2 bg-blue"></span></h6><small class="text-gray">1784605674</small>
+													</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-start align-items-sm-center mb-4 flex-column flex-sm-row">
+                      <div class="left d-flex align-items-center">
+                        <div class="icon icon-lg shadow mr-3 text-gray"><i class="fab fa-android"></i></div>
+                        <div class="text">
+													<a href="">
+														  <h6 class="mb-0 d-flex align-items-center"> <span>在线升级</span><span class="dot dot-sm ml-2 bg-blue"></span></h6><small class="text-gray">1784605674</small>
+													</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-violet"></div>
+                    <div class="text">
+                      <h6 class="mb-0">PHP版本</h6><span class="text-gray">{{php}}</span>
+                    </div>
+                  </div>
+                  <div class="icon bg-violet text-white"><i class="fas fa-clipboard-check"></i></div>
+                </div>
+                <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-green"></div>
+                    <div class="text">
+                      <h6 class="mb-0">当前系统</h6><span class="text-gray">{{windows}}</span>
+                    </div>
+                  </div>
+                  <div class="icon bg-green text-white"><i class="fas fa-dollar-sign"></i></div>
+                </div>
+                <div class="bg-white shadow roundy px-4 py-3 d-flex align-items-center justify-content-between mb-4">
+                  <div class="flex-grow-1 d-flex align-items-center">
+                    <div class="dot mr-3 bg-blue"></div>
+                    <div class="text">
+                      <h6 class="mb-0">Mysql版本</h6><span class="text-gray"></span>
+                    </div>
+                  </div>
+                  <div class="icon bg-blue text-white"><i class="fas fa-user-friends"></i></div>
+                </div>
+                <div class="card px-5 py-4">
+                  <h2 class="mb-0 d-flex align-items-center"><span>V2.3</span><span class="dot bg-red d-inline-block ml-3"></span></h2><span class="text-muted">2019年12月12日</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="py-5">
+            <div class="row">
+              <div class="col-lg-12"><a href="#" class="message card px-5 py-3 mb-4 bg-hover-gradient-primary no-anchor-style">
+                  <div class="row">
+                    <div class="col-lg-3 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
+                      <h6 class="mb-0">20120.2.14</h6>
+                    </div>
+                    <div class="col-lg-9 d-flex align-items-center flex-column flex-lg-row text-center text-md-left">
+                      <p class="mb-0 mt-3 mt-lg-0">麦麦云网站访问控制系统,历史上第一个版本!情人节快乐♥</p>
+                    </div>
+                  </div>
+                  </a>
+                  </div>
+            </div>
+          </section>
+        </div>
+        <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6 text-center text-md-left text-primary">
+                <p class="mb-2 mb-md-0">若旧 &copy; 2019-2020</p>
+              </div>
+              <div class="col-md-6 text-center text-md-right text-gray-400">
+                <p class="mb-0">Copyright &copy; 2020麦麦云网站访问控制系统</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+		 <!-- 修改密码 -->
+			<div class="modal fade" id="edit_pwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-center">
+							<div class="modal-content">
+									<div class="modal-header">
+											<h4 class="modal-title">
+													管理员设置
+											</h4>
+									</div>
+									 <div class="form-group">
+										  <input type="text" v-model="name" class="form-control" value="" style="margin-top: 20px" placeholder="请输入修改后用户名(不填写默认为不修改):">
+											<input type="text" v-model="pwd" class="form-control" value="" style="margin-top: 20px" placeholder="请输入原密码:">
+											<input type="text" v-model="newpwd" class="form-control" value="" style="margin-top: 20px" placeholder="请输入新密码:">
+									 </div>
+									<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">取消
+											</button>
+											<button type="submit" class="btn btn-primary" @click="editPass">
+													确认修改
+											</button>
+									</div>
+							</div>
+					</div>
+			</div>
+		<!-- 模态框 -->
+		<input type="hidden" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#click" id="model"></input>
+		 <div class="modal fade" tabindex="-1" role="dialog" id="click">
+		   <div class="modal-center" role="document">
+		     <div class="modal-dialog modal-content">
+		       <div class="modal-header">
+		         <h4 class="modal-title" id="title"></h4>
+		       </div>
+		       <div class="modal-body">
+		         <p id="content"></p>
+		       </div>
+		       <div class="modal-footer">
+		         <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+		       </div>
+		     </div><!-- /.modal-content -->
+		   </div><!-- /.modal-dialog -->
+		 </div><!-- /.modal -->
+    <!-- JavaScript files-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="../public/js/vue.js"></script>
+		<script src="../public/js/vue-resource.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/front.js"></script>
+		<script type="text/javascript" src="js/editPass.js"></script>
+  </body>
+</html>
