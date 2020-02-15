@@ -9,3 +9,5 @@
 2.支持设置密钥期限
 
 演示地址：<a href="http://fk.haomaim.cn" target="_blank">http://fk.haomaim.cn</a>
+
+QQ群:371079936
