@@ -8,4 +8,4 @@
 
 2.支持设置密钥期限
 
-演示地址：http：//fk.haomaim.cn
+演示地址：<a href="http：//fk.haomaim.cn">http：//fk.haomaim.cn</a>
