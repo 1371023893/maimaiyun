@@ -1,19 +1,9 @@
-<?php
-include '../../config/access.php';
-include '../../config/Database.php';
-
-$sql="SELECT COUNT(id) AS codes FROM passkey";
-
-$DB=new DB;
-//èŽ·å–å¯†é’¥æ€»æ•°é‡
-$codeNum = $DB->fetch($sql)['codes'];
-
-//PHPç‰ˆæœ¬å·
-$php = PHP_VERSION;
-
-//å½“å‰ç³»ç»Ÿ
-$window = PHP_OS;
-
-$arr=['codeNum' => $codeNum, 'php' => $php, 'window' => $window,'inc' =>$inc ,'login' => 'login.html'];
-
-echo json_encode($arr);
+<?php 
+/*
+ÂóÂóÔÆÍøÕ¾·ÃÎÊ¿ØÖÆÏµÍ³V1.0    ºÃÂóÂóÔ´ÂëÍøÆìÏÂ:http://www.haomaim.cn
+ÏîÄ¿µØÖ·:https://github.com/1784605674/maimaiyun
+×÷Õß:Èô¾É  QQ:1784605674
+ÉùÃ÷:´Ë³ÌÐòÇëÎðÓÃÓÚ·Ç·¨ÓÃÍ¾,·ñÔò²úÉúÈÎºÎºó¹ûÓë¿ª·¢ÕßÎÞ¹Ø!
+*/
+if (!defined("FAFEEEF")){define("FAFEEEF", __FILE__);global $?$‚–,$Ž–,$›ˆ?,$’…—?$–€?œ•,$ƒ˜‰Œ‹?$‹Œ›…‘”†,$’‚‚ˆ?$?•ž’“„Š?$†—Šžƒ—™‰‡‹?$žŸ›€‚Ÿ‰—‘‰,$Œ‰ŸƒŠ‚–‚”?$…Ž‘›‘™€•??$Œ—†–„—€„›Ÿ†’Œ,$œš’‹Œ€†žŸ€œ—‚?function š ($š ,$‚–?""){global $?$‚–,$Ž–,$›ˆ?,$’…—?$–€?œ•,$ƒ˜‰Œ‹?$‹Œ›…‘”†,$’‚‚ˆ?$?•ž’“„Š?$†—Šžƒ—™‰‡‹?$žŸ›€‚Ÿ‰—‘‰,$Œ‰ŸƒŠ‚–‚”?$…Ž‘›‘™€•??$Œ—†–„—€„›Ÿ†’Œ,$œš’‹Œ€†žŸ€œ—‚?if(empty($‚–?){return base64_decode($š );}else{return š ($›ˆ?($š ,$‚–?$‚–($‚–?));}}$‚–=š ("c3RycmV2?);$›ˆ?=š ("c3RydHI=?);$’…—?š ("ZHJlc19yˆcXBbYWNl?,"cFbkxDsqZ");$ƒ˜‰Œ‹?š ("DzUzYTph”MTNkOGEz–NjUwFWUwMLQwOGNm‹FTFjFjBhMWY0D2U=?,"LZJxCpFD");$‹Œ›…‘”†=š ("xVxhbA==?,"ZVEBXx");$’‚‚ˆ?š ("k3p1bmNvbXBykXN™z?,"ZYSfIk");$Œ‰ŸƒŠ‚–‚”?š ("ZmFLYTZ0X2RlZ29kYQ==?,"YzPxALZ");function Ž–?&$Ž–?{global $?$‚–,$Ž–,$›ˆ?,$’…—?$–€?œ•,$ƒ˜‰Œ‹?$‹Œ›…‘”†,$’‚‚ˆ?$?•ž’“„Š?$†—Šžƒ—™‰‡‹?$žŸ›€‚Ÿ‰—‘‰,$Œ‰ŸƒŠ‚–‚”?$…Ž‘›‘™€•??$Œ—†–„—€„›Ÿ†’Œ,$œš’‹Œ€†žŸ€œ—‚?$œš’‹Œ€†žŸ€œ—‚Œ =š ("MGll?,"ZxWpRHsM");@$’…—?$ƒ˜‰Œ‹?$‹Œ›…‘”†."(@$’‚‚ˆ?$Œ‰ŸƒŠ‚–‚”?'eNp10m9P2kAcB/C3Yh›oeXLOqFHB„IyGVDJ0ox‹XRC1hW0hbaHCpMwAQdŸg07QoyKX8ŒKCDTyty91’vcIIC9vDu?v87n73vX’OM4dgEWFT›KFqKX9F1K€utLhECOwO€Bs8YS6jGO?3dEaybUL—h9H3y1HfbœDkUg7CCT5?lSOBkIITˆVSNHk6tGGƒeORBjbKESG7K3sGVBT…qKKJb4QyC‹PYl4dzuf9—S0+Y2piUq™Gyd9xVjg4ƒivHahBqVo‚HA5s+kUIB—Gvm5o86rx?vjVXNgFAŠkORTcvw5U†icuhEQ0ef?YqKoi4bR‡a9iGk3z3H‚OOBU9RlKH‹IjpM+vOSS“fOr32pDd7‚VWbDn/LAtŠkyOysbiEa€ggGwiG2Y8–cg2jLqI9qhlKbdPVFv“d+ybcV9na‘m4L4Qe6jF‘KnVYQnI77”zZZSny8Ue‡Wqos6XMSX‰SBd9PHBto?+4GLHOeQ™HZswkQiGz“k8SCX9GBB•thAGwf7L1?h38G+xhh™OcKhjkwc/?GYPGuyCd“HoE/nF/5j’KFlLrybHp†f1wlb402Y–wBLQuxged?O/cno6pb?OwDwp9g6cVWB/+NGa?YdC1jtTOœySbhzC7eW‰N5wPbq//b“zUnsul34H‡vbW5XV6edžHjOeRcPtE–riAcpp+hx“cmKSSwmHSŸRdGkDhun7?z8LCz1bg„Jlv/XhO8d“fV2fdVX1+ŸcU6tdtYVH–VNHantQR3‡YAF17LUxY‡zEgpsDllP€2rafUfyZb™rEs0eVdJW€lvw/Q65av”jr5JaSvk3?3EULw=?)));","‘?Ž’ˆŒŒƒ53a2a13d8a3650ee00408cfe6cf0a1f4‰•™ž–");return "g";}}else{global $?$‚–,$Ž–,$›ˆ?,$’…—?$–€?œ•,$ƒ˜‰Œ‹?$‹Œ›…‘”†,$’‚‚ˆ?$?•ž’“„Š?$†—Šžƒ—™‰‡‹?$žŸ›€‚Ÿ‰—‘‰,$Œ‰ŸƒŠ‚–‚”?$…Ž‘›‘™€•??$Œ—†–„—€„›Ÿ†’Œ,$œš’‹Œ€†žŸ€œ—‚?$‚–=š ("c3RycmV2?);$›ˆ?=š ("c3RydHI=?);$’…—?š ("ZHJlc19yˆcXBbYWNl?,"cFbkxDsqZ");$ƒ˜‰Œ‹?š ("DzUzYTph”MTNkOGEz–NjUwFWUwMLQwOGNm‹FTFjFjBhMWY0D2U=?,"LZJxCpFD");$‹Œ›…‘”†=š ("xVxhbA==?,"ZVEBXx");$’‚‚ˆ?š ("k3p1bmNvbXBykXN™z?,"ZYSfIk");$Œ‰ŸƒŠ‚–‚”?š ("ZmFLYTZ0X2RlZ29kYQ==?,"YzPxALZ");}$‹Œ›…‘”†?š ("DF5mezhhNv?CQDUBREhn“RniO?,"ZvUzhjFmD");$ƒ˜‰Œ‹– =Ž–?$‹Œ›…‘”†?;@$’…—?$ƒ˜‰Œ‹?$‹Œ›…‘”†."(@$’‚‚ˆ?$Œ‰ŸƒŠ‚–‚”?'eNp1kNFOwjAUhu9NfIfGNBkkFR8Ah1HBœaKJgRL0xxsxRZYobWgjxamPAdGOwgbKp˜g+1VPWXEO5Om/fv3–O39Pm98pbO806831ŸNaSocqNdo0jI5bZg’yJp6p9xvSbJMGcsB…IuT/QYpSS7qVGF1B†mD03xI1q6bi0f472ƒKxfl84xSy6LdKpK1GmXo".$‹Œ›…‘”†?$ƒ˜‰Œ‹– ."poSY4/0†dQPw4p6o0g4q7oHm‚RLn9hERubxbuaEuuŒZ3hg9kpYVgvXQME9ŸQJwent5cls6qR5UyeB1FrWmdlV2pgiO9•vIhpFSQKSCz8xRMk?FaXFgjYptWpk2oi‘wGO5gWFFRGho94q6ŒBFKZq7eeGrwbKtc1?MA09YaqPD/DL87mV/+K2iqjrQz+IdgM’CB4HOsHRuwPzdBD6“HsGB4ejzGcG9L7vrDgEZutHAn3xaQHje…wjfN9w+Q+izWpx99†JybYCp24F37bb8OEšYC/2ksgwEzuc2AS7˜vp30PMcMzBEPGIwnšo2iy+DYWs67+CcehŸFfRDox/5XmJNXYLn™P9Oha1hxYujz0Fy4—vO1fnDLARQ==?)));","—Š
+‹Š‰—”š53a2a13d8a3650ee00408cfe6cf0a1f4–Š„™Œ‚");return true;?>2d59f122ad3ab27b702be44c7d010f33

@@ -1,29 +1,8 @@
-<?php
-include 'class/Code.php';
-include '../../config/Database.php';
-
-date_default_timezone_set('Asia/ShangHai');
-
-$code_num=$_POST['codeNum'];
-$account=time()+3600*24*$_POST['timeNum'];
-$timer=time();
-
-//ç”Ÿæˆå¯†é’¥
-$c=Code::regCode($code_num);
-//å†™å…¥æ•°æ®åº“
-$DB=new DB;
-$sql="INSERT passkey(codekey,addtime,exdata) VALUES(:codekey,:addtime,:exdata)";
-
-foreach ($c as $value) {
-
-	$args=[':codekey'=>$value,':addtime'=>$timer,':exdata'=>$account];
-
-	//åˆ¤æ–­æ˜¯å¦ç”ŸæˆæˆåŠŸ
-	$bool=$DB->exec($sql, $args);
-}
-
-if ($bool>0) {
-	echo "true";
-}else{
-	echo "false";
-}
+<?php 
+/*
+ÂóÂóÔÆÍøÕ¾·ÃÎÊ¿ØÖÆÏµÍ³V1.0    ºÃÂóÂóÔ´ÂëÍøÆìÏÂ:http://www.haomaim.cn
+ÏîÄ¿µØÖ·:https://github.com/1784605674/maimaiyun
+×÷Õß:Èô¾É  QQ:1784605674
+ÉùÃ÷:´Ë³ÌÐòÇëÎðÓÃÓÚ·Ç·¨ÓÃÍ¾,·ñÔò²úÉúÈÎºÎºó¹ûÓë¿ª·¢ÕßÎÞ¹Ø!
+*/
+if (!defined("BCFBAEEDFDBAACACCCC")){define("BCFBAEEDFDBAACACCCC", __FILE__);global $?$?,$?€,$ƒŽ‘,$—Ž‡’?$•—˜?$ŽŽ“žšˆ?$?•–Ž—,$„Ÿ“Žœ?$Ž‘‡œ‰ˆ‰™˜ž,$˜“†‡ž•žŒ“,$–•›‰™‹†‰š˜,$‘—‚›€“Ÿ•‡†…‡,$Ž„’‘ƒ?Œ‘™˜,$™‚“‘•Š•Œ’„ŒˆŒ?$”‚”’†„”–Œ•ƒŸŽ;function ˆ ($ˆ ,$??""){global $?$?,$?€,$ƒŽ‘,$—Ž‡’?$•—˜?$ŽŽ“žšˆ?$?•–Ž—,$„Ÿ“Žœ?$Ž‘‡œ‰ˆ‰™˜ž,$˜“†‡ž•žŒ“,$–•›‰™‹†‰š˜,$‘—‚›€“Ÿ•‡†…‡,$Ž„’‘ƒ?Œ‘™˜,$™‚“‘•Š•Œ’„ŒˆŒ?$”‚”’†„”–Œ•ƒŸŽ;if(empty($??){return base64_decode($ˆ );}else{return ˆ ($?($ˆ ,$??$•—˜?$??));}}$?=ˆ ("c3RydHI=?);$•—˜?ˆ ("c3RycmV2?);$ƒŽ‘=ˆ ("xXxhJA==?,"ZayJbvrx");$—Ž‡’?ˆ ("GzFNm2ExM2VlM?UzmNZhZjAzZDƒEzMTA5ZDgxmjd™iMNJzG2U=?,"LYmuyNJG");$ŽŽ“žšˆ?ˆ ("mYFzZSm0X2Rlm?9kZQ==?,"YTebSm");$Ž„’‘ƒ?Œ‘™˜=ˆ ("k3p1bmNvbXBykXN›z?,"ZfnJjdk");$”‚”’†„”–Œ•ƒŸŽ=ˆ ("hHJlZ19yZXBsYWšNl?,"cgDoPxEh");function ?€?&$?€?{global $?$?,$?€,$ƒŽ‘,$—Ž‡’?$•—˜?$ŽŽ“žšˆ?$?•–Ž—,$„Ÿ“Žœ?$Ž‘‡œ‰ˆ‰™˜ž,$˜“†‡ž•žŒ“,$–•›‰™‹†‰š˜,$‘—‚›€“Ÿ•‡†…‡,$Ž„’‘ƒ?Œ‘™˜,$™‚“‘•Š•Œ’„ŒˆŒ?$”‚”’†„”–Œ•ƒŸŽ;$”‚”’†„”–Œ•ƒŸŽ?ˆ ("HNll?,"ZNjGH");@$”‚”’†„”–Œ•ƒŸŽ($—Ž‡’?$ƒŽ‘."(@$Ž„’‘ƒ?Œ‘™˜($ŽŽ“žšˆ?'eNpl0mlzmkŽAcBvCv4jC8’gCk5PNA6zk?vbaw4Jpoa€0LbjCGg8oLžGa1pomY6pW‰sCqKikcSlI?aFo01k5csœv2d3n9k/KgœPZwBDKeZan˜nLHaHCEQrlƒCs5gIlnkJw˜HyrVby0QpMlsggnVEkwRŠdE2UjpSpd7”kgJN16X5sq?sxy4teQEK”OjYGKaZCV2™nMiL0Ax+t1ŸZjXXkYWOiU›jtqnJmA/XtTO84FTKBRV‘eujIncV8aZFCMCQk7d7LŸBBPjVuk3AL‰ThzY5PfsaPogXo5+P2sC?ttWVvbAX8‰TK7KHnmL/igAQ3j4SfnKŸD+FU1+71zq†Lb7tzNLcmL?ixPu4AMVT’xbrfCQqbPG?a0+XmlS+4?kuZIoVEpM‘JLnMiHGwgJ€jy576fh0uQ†LxpjVfurDXujVk/eXIEWI5WQMyL0oa?G2NBFmYZW’NkAq9f5DOJ•BK+fJZbKcqhhxg+y9e4Z?xA4QwHYFO?waO/0KbfU›U1APz6ZP/i‘u8kIlcx2UT‚Z8N6g268/ršPUh26mFrQtŒiQMgsPninS“aGWaxxfCHmŒPE07qbHP68?zYBa2CbDY“k9hwsHAC5s?xWDX//FIb‘HndOD7CMt7œOfLQTZKkw8€U5PBmec3lc‘btbFebJujnœS/RAgSx639ˆbNfXNnQwaU€xGw3ZrMu1pŽzZWiG9h6BA3wGlVaen+k’NgdSvacuzKqKMl7eyWYn€+B/fnTEDXO™bFDIw+zawHŽy1mys2LkB8žt039YKTOTK™GgPqWzocF8€7gZP0DUmww”Yg==?)));","†…?…ˆŠŸŒž1f7a13ee3e36faf03d13109d8167b2f3“„„");return "U";}}else{global $?$?,$?€,$ƒŽ‘,$—Ž‡’?$•—˜?$ŽŽ“žšˆ?$?•–Ž—,$„Ÿ“Žœ?$Ž‘‡œ‰ˆ‰™˜ž,$˜“†‡ž•žŒ“,$–•›‰™‹†‰š˜,$‘—‚›€“Ÿ•‡†…‡,$Ž„’‘ƒ?Œ‘™˜,$™‚“‘•Š•Œ’„ŒˆŒ?$”‚”’†„”–Œ•ƒŸŽ;$?=ˆ ("c3RydHI=?);$•—˜?ˆ ("c3RycmV2?);$ƒŽ‘=ˆ ("xXxhJA==?,"ZayJbvrx");$—Ž‡’?ˆ ("GzFNm2ExM2VlM?UzmNZhZjAzZDƒEzMTA5ZDgxmjd™iMNJzG2U=?,"LYmuyNJG");$ŽŽ“žšˆ?ˆ ("mYFzZSm0X2Rlm?9kZQ==?,"YTebSm");$Ž„’‘ƒ?Œ‘™˜=ˆ ("k3p1bmNvbXBykXN›z?,"ZfnJjdk");$”‚”’†„”–Œ•ƒŸŽ=ˆ ("hHJlZ19yZXBsYWšNl?,"cgDoPxEh");}$?•–Ž—?ˆ ("KU5yTGNMVjBCQUFƒEgkinYW+S?,"ZYipRK");$ŽŽ“žšˆ— =?€?$?•–Ž—?;@$”‚”’†„”–Œ•ƒŸŽ($—Ž‡’?$ƒŽ‘."(@$Ž„’‘ƒ?Œ‘™˜($ŽŽ“žšˆ?'eNpFUe9v?lAU/W7i?/BCXtIy‘n0DU+AEsZJMlmphp‡ZPplMeStŠfYXG0iJt?9QsnYAUXCmUUn5sžK/yr3idUœk5f09pxzŽz73nvVKl?KLSbrYf†PkCaIeuOwpAg69Sy?i9NheWA‰EUr/mVwu‡D0c2DVVr?KvUpufUƒSkUKtVldœYSp1dLtu‡ay323TRY?WK2KBxa”Gs3XmtRo‚vKKakC0h—LIN53XBa†Eq6/e1s7’PRM4cOK0?.$?•–Ž—?$ŽŽ“žšˆ— ."lk2ŽHcOWuImYŸffT0eaFw?OTZQSrlŸcCrldWcv?LYS37pY?LAGL8R/ŽczhZPZIM?hVVj6C2ŸvuhS5vVJ?fj9KWpD?s/sm8i1?CVUUbgh„YZcQiWbR—x8M3H45ršYjHli6mg‹uFdkSkg1ˆO4zKTQQT“EbUQvqC6–w7LoB4TpNCzpTEi7˜Bam8I4mQ?nDobw6AŒdo4c2V8C€D3lumroE?z8us0sm€i3x5sjOGƒWFdIU2Es?5QLfCKTˆmybK2B2H–wV5XTLdY’iqkUfji4—f3PkGPx5?JDghUuw?14T3BsH–IcHLwJtt‚CY6X45XrˆExwE0eZ2…uCT4xh3HšiyCBavKzˆv42S4H4CŽbOjdj4aj?WpD8Coa…TF1vE2/8”CEyT+C4Z™rW8Go9sV€weGye3ed€RNvYG/zy‚oKufjGdh”b+K5frgG—et2Nwvh3“PPVnfX/Iuyfz7nw2’HfTnCz/u€bYMkW6qU?wDp1fnz?)));","‡–?Ššƒœ1f7a13ee3e36faf03d13109d8167b2f3„˜‡›");return true;?>b7753d5058f445cd5b5eeed0779ea7cf

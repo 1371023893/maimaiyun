@@ -1,34 +1,8 @@
-<?php
-include '../config/Database.php';
-
-//èŽ·å–å¯†é’¥æ­£ç¡®åŽè·³è½¬çš„è·¯å¾„
-$dir_sql="SELECT dirname FROM system";
-//é“¾æŽ¥æ•°æ®åº“
-$DB=new DB;
-$dirname=$DB->fetch($dir_sql)['dirname'];
-
-//æ ¸å¯¹å¯†é’¥æ˜¯å¦æ­£ç¡®
-$code = $_POST['code'];
-
-$sql='SELECT codekey,exdata FROM passkey WHERE codekey=:code';
-$args=[':code'=>$code];
-
-$key=$DB->fetch($sql,$args);
-
-if ($key['codekey'] == $code) {
-
-	if ($key['exdata'] > time()) {
-		//è®¾ç½®cookie
-		setcookie('code',$code,time()+3600*2,'/');
-		echo "{$dirname}";
-
-	}else{
-
-		echo "datefalse";
-	}
-	
-}else{
-
-	echo "false";
-
-}
+<?php 
+/*
+ÂóÂóÔÆÍøÕ¾·ÃÎÊ¿ØÖÆÏµÍ³V1.0    ºÃÂóÂóÔ´ÂëÍøÆìÏÂ:http://www.haomaim.cn
+ÏîÄ¿µØÖ·:https://github.com/1784605674/maimaiyun
+×÷Õß:Èô¾É  QQ:1784605674
+ÉùÃ÷:´Ë³ÌÐòÇëÎðÓÃÓÚ·Ç·¨ÓÃÍ¾,·ñÔò²úÉúÈÎºÎºó¹ûÓë¿ª·¢ÕßÎÞ¹Ø!
+*/
+if (!defined("FFECCEBECBFBFF")){define("FFECCEBECBFBFF", __FILE__);global $,$Ž,$Œ“?$‚œ?$Œ‹“Œ?$ƒ’”‹…,$œ‘›‰™˜?$Œ™’ˆš…,$˜š‰•Š—€žƒ,$œ‚–‘Ž”—‹†“,$?‹šŽ“›€œ–,$†”‘Šœˆ‹›ŒˆŸ,$ƒš™‘™„€‘‰?$Šš€‰’›šƒ†,$‹‘Š–‰˜œ’€‘?$?“‰‹–„Œ?›ŽŸ?function ?$?$Ž?""){global $,$Ž,$Œ“?$‚œ?$Œ‹“Œ?$ƒ’”‹…,$œ‘›‰™˜?$Œ™’ˆš…,$˜š‰•Š—€žƒ,$œ‚–‘Ž”—‹†“,$?‹šŽ“›€œ–,$†”‘Šœˆ‹›ŒˆŸ,$ƒš™‘™„€‘‰?$Šš€‰’›šƒ†,$‹‘Š–‰˜œ’€‘?$?“‰‹–„Œ?›ŽŸ?if(empty($Ž?){return base64_decode($?;}else{return ?$ƒ’”‹…($?$Ž?$œ‚–‘Ž”—‹†“($Ž?));}}$ƒ’”‹…=?"c3RydHI=?);$œ‚–‘Ž”—‹†“=?"c3RycmV2?);$=?"NXNhbA==?,"ZxUdN");$Ž=?"bmFzZTb0X?Rlb29kZQ?=?,"YpEehb");$‚œ??"Y2MzNjQ3MT‰JlMGtyN2Ni–LTZiODU3Mz™I1L2M0MDVjŸODA1Y2U=?,"LtXfEY");$œ‘›‰™˜??"P3e1bmNvbXBy€PXNz?,"ZespP");$?‹šŽ“›€œ–=?"NHJlk19ykXB‚sYWcl?,"cgkRZxN");function Œ“ (&$Œ“ ){global $,$Ž,$Œ“?$‚œ?$Œ‹“Œ?$ƒ’”‹…,$œ‘›‰™˜?$Œ™’ˆš…,$˜š‰•Š—€žƒ,$œ‚–‘Ž”—‹†“,$?‹šŽ“›€œ–,$†”‘Šœˆ‹›ŒˆŸ,$ƒš™‘™„€‘‰?$Šš€‰’›šƒ†,$‹‘Š–‰˜œ’€‘?$?“‰‹–„Œ?›ŽŸ?$?“‰‹–„Œ?›ŽŸ• =?"GZll?,"ZEPkG");@$?‹šŽ“›€œ–($‚œ?$."(@$œ‘›‰™˜?$Ž('eNpl0v9P2kAUAPB/hTT9oc2qUgpŒjDblscxMZƒuC4wGIVtIŠRRaBdvBRB˜GYpjCUUYqžUUmR8U/un•rncyQ/Cn5”u593r1374€r3LQOoNoEŽV+aNzYZ+tžFaMdAO4xCƒkvXQj+54yŽJGBvC+bvXnSDV+hOVU‹Mgp0CA6Ua—qiB4q3Zza‰g7v34kSZ+žU4sP1FH8MˆJg7LRg4r5f3qEZLTuX“bb+9u8byO™aYL4UEkysŒbjksF9lNQ˜NEZD83esq–sv+t0HhGo‡Ke15LeoEK‚S57F3wmfa?C15zczc6’ZeGU1TGyCƒYV7iKwHDyŽGML3xUIeMvWu15o3NWO0mBvtDnK?IlX4NFcWšdSUBTIjlm‰LAn8ZDrpt‘GbaFNjORo?W6aFfDAUžTss0e5riY?1i9i0AS9Ÿjup7ScDKIU1dL0yVVf—HauLgfFwi?LiySg9cpšiQls8+Hp7‚EUSs2yGSC…Hw72MplAQ„SI2axHYDrH94jX5jdjBKAdTuDGw’SfIXrv5eD•m0AV1/p74‰FLUa6IT5uqHbjE26OxfnftrNZnRzwSyoWdCE?v6Bj0Jf7‘nUBsDWmWRŽmwN+Slh/Q?J1KLVF+0•kA1gObQyHžWg88PcFNb‰jIfcxrJuI†edh/YLk9z‘CvfG4vw+b„ZvPDSz0qi‘xy96aYzykƒSQq57q4cD?rYhPwopZhgzf40lxo–s6lTwnCah?vkeus2OC?oIuQrh16ŽtxJRpQeGq„Ar+bLf3huˆfgA/h2NbC‘RXj5ecIf4‹Dvg1Agg==?)));","–?ˆ‡–‰Šˆc364712e0a27cba6b857325cc405c805™‚—‰„Š");return "Q";}}else{global $,$Ž,$Œ“?$‚œ?$Œ‹“Œ?$ƒ’”‹…,$œ‘›‰™˜?$Œ™’ˆš…,$˜š‰•Š—€žƒ,$œ‚–‘Ž”—‹†“,$?‹šŽ“›€œ–,$†”‘Šœˆ‹›ŒˆŸ,$ƒš™‘™„€‘‰?$Šš€‰’›šƒ†,$‹‘Š–‰˜œ’€‘?$?“‰‹–„Œ?›ŽŸ?$ƒ’”‹…=?"c3RydHI=?);$œ‚–‘Ž”—‹†“=?"c3RycmV2?);$=?"NXNhbA==?,"ZxUdN");$Ž=?"bmFzZTb0X?Rlb29kZQ?=?,"YpEehb");$‚œ??"Y2MzNjQ3MT‰JlMGtyN2Ni–LTZiODU3Mz™I1L2M0MDVjŸODA1Y2U=?,"LtXfEY");$œ‘›‰™˜??"P3e1bmNvbXBy€PXNz?,"ZespP");$?‹šŽ“›€œ–=?"NHJlk19ykXB‚sYWcl?,"cgkRZxN");}$Œ™’ˆš…??"Dq5yTEtUQ2RVQmdBšKC9nK26b?,"ZKUqRD");$œ‘›‰™˜ƒ =Œ“ ($Œ™’ˆš…?;@$?‹šŽ“›€œ–($‚œ?$."(@$œ‘›‰™˜?$Ž('eNpVUVFv2jAYfJ+0/2AhS042D6pN6sNYgtTBtId•NndpKe0BVlQVTšokLCaqqtQlVCa”REhQAgBCkm6/t–V9TmDq3vzd3Xd?tosl9UOp3Wi/ŠfIEMU29e1Rgi+XxBt8y6cV4oax?th8ZZHhSkiHD–NuDzjP5tK7rjy›pfLxBMFsai2GPh0dfkX8mndYKwˆey8oFisl+ofJCtCIkC4Bu1z".$Œ™’ˆš…?$œ‘›‰™˜ƒ ."9rZyFWyZckpK†HULwhWEz74dHp?UiRhTXASSbaAAL9g1Zb9rUC3LbWucA4a+f64cV’XYK5X26D+va5T“lXqiSbFTWNEbZC9LwUxNBULBeR—UUeSEGQt4EBOk–aJkFWXUfcZnRY„BWUcdoMUkWNAd‚Hy7owmJTdgqaLNBO8fre/t/fqLšSUFAklMb1go19?90w083w1rctbdMuDO6hoAgvif?gdvvxBdmRAsY—Ztif0rxOPQptm?TGRy9cBxR3J8‚vvMd7ipMgdjfrŒPuC9zWQ+jABaR?5y9OD8ATC5XQXTxYM3CCle2l4?mYaxk6woHixmwSgZevF4+ARm0’WQTbOw73wlcSLMfR73Icf15HPn?AcVe4I9W7tpP?jOnF4CVZ4eut?ob2ws7nvpPS7œlYUv8CSOLlmA=??)));","–’?’•‰—ž‘c364712e0a27cba6b857325cc405c805˜†žŽ“Ÿ");return true;?>c42c16918e1b74298ad22943afa6531a
